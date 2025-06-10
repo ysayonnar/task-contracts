@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package tasks;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "ysayonnar.sso.v1;ssov1";
+
+service TasksService {
+  rpc GetTasks(GetTasksRequest) returns (GetTasksResponse);
+  rpc GetTasksByCategory(GetTasksByCategoryRequest)
+      returns (GetTasksByCategoryResponse);
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse);
+  rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse);
+  rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse);
+}
+
+message Task {
+  int64 task_id = 1;
+  int64 category_id = 2;
+  string category_name = 3;
+  string title = 4;
+  string description = 5;
+  bool is_notificate = 6;
+  google.protobuf.Timestamp deadline = 7;
+  google.protobuf.Timestamp created_at = 8;
+}
+
+message GetTasksRequest { int64 user_id = 1; }
+
+message GetTasksResponse { repeated Task tasks = 1; }
+
+message GetTasksByCategoryRequest {
+  int64 user_id = 1;
+  int64 category_id = 2;
+}
+
+message GetTasksByCategoryResponse { repeated Task tasks = 1; }
+
+message CreateTaskRequest {
+  int64 user_id = 1;
+  int64 category_id = 2;
+  string title = 3;
+  string description = 4;
+  bool is_notificate = 5;
+  google.protobuf.Timestamp deadline = 6;
+}
+
+message CreateTaskResponse { bool is_created = 1; }
+
+message UpdateTaskRequest {
+  int64 user_id = 1;
+  int64 category_id = 2;
+  string title = 3;
+  string description = 4;
+  bool is_notificate = 5;
+  google.protobuf.Timestamp deadline = 6;
+}
+
+message UpdateTaskResponse { bool is_updated = 1; }
+
+message DeleteTaskRequest {
+  int64 user_id = 1;
+  int64 task_id = 2;
+}
+
+message DeleteTaskResponse { bool id_deleted = 1; }

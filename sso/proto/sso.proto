@@ -15,9 +15,7 @@ message RegisterRequest {
   string password = 2;
 }
 
-message RegisterResponse {
-  int64 user_id = 1;
-}
+message RegisterResponse { int64 user_id = 1; }
 
 message LoginRequest {
   string email = 1;
@@ -25,15 +23,11 @@ message LoginRequest {
   int32 app_id = 3;
 }
 
-message LoginResponse {
-  string token = 1;
-}
+message LoginResponse { string token = 1; }
 
 message DeleteRequest {
   string email = 1;
   string password = 2;
 }
 
-message DeleteResponse {
-  bool is_deleted = 1;
-}
+message DeleteResponse { bool is_deleted = 1; }
