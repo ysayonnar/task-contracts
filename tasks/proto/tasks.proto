@@ -46,7 +46,7 @@ message CreateTaskRequest {
   google.protobuf.Timestamp deadline = 6;
 }
 
-message CreateTaskResponse { bool is_created = 1; }
+message CreateTaskResponse { int64 task_id = 1; }
 
 message UpdateTaskRequest {
   int64 user_id = 1;
@@ -57,7 +57,7 @@ message UpdateTaskRequest {
   google.protobuf.Timestamp deadline = 6;
 }
 
-message UpdateTaskResponse { bool is_updated = 1; }
+message UpdateTaskResponse { int64 task_id = 1; }
 
 message DeleteTaskRequest {
   int64 user_id = 1;

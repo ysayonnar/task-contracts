@@ -392,7 +392,7 @@ func (x *CreateTaskRequest) GetDeadline() *timestamppb.Timestamp {
 
 type CreateTaskResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IsCreated     bool                   `protobuf:"varint,1,opt,name=is_created,json=isCreated,proto3" json:"is_created,omitempty"`
+	TaskId        int64                  `protobuf:"varint,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -427,11 +427,11 @@ func (*CreateTaskResponse) Descriptor() ([]byte, []int) {
 	return file_tasks_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CreateTaskResponse) GetIsCreated() bool {
+func (x *CreateTaskResponse) GetTaskId() int64 {
 	if x != nil {
-		return x.IsCreated
+		return x.TaskId
 	}
-	return false
+	return 0
 }
 
 type UpdateTaskRequest struct {
@@ -520,7 +520,7 @@ func (x *UpdateTaskRequest) GetDeadline() *timestamppb.Timestamp {
 
 type UpdateTaskResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IsUpdated     bool                   `protobuf:"varint,1,opt,name=is_updated,json=isUpdated,proto3" json:"is_updated,omitempty"`
+	TaskId        int64                  `protobuf:"varint,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -555,11 +555,11 @@ func (*UpdateTaskResponse) Descriptor() ([]byte, []int) {
 	return file_tasks_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateTaskResponse) GetIsUpdated() bool {
+func (x *UpdateTaskResponse) GetTaskId() int64 {
 	if x != nil {
-		return x.IsUpdated
+		return x.TaskId
 	}
-	return false
+	return 0
 }
 
 type DeleteTaskRequest struct {
@@ -691,10 +691,9 @@ const file_tasks_proto_rawDesc = "" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12#\n" +
 	"\ris_notificate\x18\x05 \x01(\bR\fisNotificate\x126\n" +
-	"\bdeadline\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"3\n" +
-	"\x12CreateTaskResponse\x12\x1d\n" +
-	"\n" +
-	"is_created\x18\x01 \x01(\bR\tisCreated\"\xe2\x01\n" +
+	"\bdeadline\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"-\n" +
+	"\x12CreateTaskResponse\x12\x17\n" +
+	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"\xe2\x01\n" +
 	"\x11UpdateTaskRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
 	"\vcategory_id\x18\x02 \x01(\x03R\n" +
@@ -702,10 +701,9 @@ const file_tasks_proto_rawDesc = "" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12#\n" +
 	"\ris_notificate\x18\x05 \x01(\bR\fisNotificate\x126\n" +
-	"\bdeadline\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"3\n" +
-	"\x12UpdateTaskResponse\x12\x1d\n" +
-	"\n" +
-	"is_updated\x18\x01 \x01(\bR\tisUpdated\"E\n" +
+	"\bdeadline\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"-\n" +
+	"\x12UpdateTaskResponse\x12\x17\n" +
+	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"E\n" +
 	"\x11DeleteTaskRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\atask_id\x18\x02 \x01(\x03R\x06taskId\"3\n" +
