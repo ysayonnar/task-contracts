@@ -65,7 +65,7 @@ message DeleteTaskRequest {
   int64 task_id = 2;
 }
 
-message DeleteTaskResponse { bool id_deleted = 1; }
+message DeleteTaskResponse { int64 task_id = 1; }
 
 message CreateCategoryRequest { string name = 1; }
 

@@ -616,7 +616,7 @@ func (x *DeleteTaskRequest) GetTaskId() int64 {
 
 type DeleteTaskResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdDeleted     bool                   `protobuf:"varint,1,opt,name=id_deleted,json=idDeleted,proto3" json:"id_deleted,omitempty"`
+	TaskId        int64                  `protobuf:"varint,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -651,11 +651,11 @@ func (*DeleteTaskResponse) Descriptor() ([]byte, []int) {
 	return file_tasks_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *DeleteTaskResponse) GetIdDeleted() bool {
+func (x *DeleteTaskResponse) GetTaskId() int64 {
 	if x != nil {
-		return x.IdDeleted
+		return x.TaskId
 	}
-	return false
+	return 0
 }
 
 type CreateCategoryRequest struct {
@@ -794,10 +794,9 @@ const file_tasks_proto_rawDesc = "" +
 	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"E\n" +
 	"\x11DeleteTaskRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
-	"\atask_id\x18\x02 \x01(\x03R\x06taskId\"3\n" +
-	"\x12DeleteTaskResponse\x12\x1d\n" +
-	"\n" +
-	"id_deleted\x18\x01 \x01(\bR\tidDeleted\"+\n" +
+	"\atask_id\x18\x02 \x01(\x03R\x06taskId\"-\n" +
+	"\x12DeleteTaskResponse\x12\x17\n" +
+	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"+\n" +
 	"\x15CreateCategoryRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\"9\n" +
 	"\x16CreateCategoryResponse\x12\x1f\n" +
