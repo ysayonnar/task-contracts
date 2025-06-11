@@ -658,6 +658,94 @@ func (x *DeleteTaskResponse) GetIdDeleted() bool {
 	return false
 }
 
+type CreateCategoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCategoryRequest) Reset() {
+	*x = CreateCategoryRequest{}
+	mi := &file_tasks_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCategoryRequest) ProtoMessage() {}
+
+func (x *CreateCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tasks_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCategoryRequest.ProtoReflect.Descriptor instead.
+func (*CreateCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_tasks_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CreateCategoryRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateCategoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CategoryId    int64                  `protobuf:"varint,1,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCategoryResponse) Reset() {
+	*x = CreateCategoryResponse{}
+	mi := &file_tasks_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCategoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCategoryResponse) ProtoMessage() {}
+
+func (x *CreateCategoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_tasks_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCategoryResponse.ProtoReflect.Descriptor instead.
+func (*CreateCategoryResponse) Descriptor() ([]byte, []int) {
+	return file_tasks_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CreateCategoryResponse) GetCategoryId() int64 {
+	if x != nil {
+		return x.CategoryId
+	}
+	return 0
+}
+
 var File_tasks_proto protoreflect.FileDescriptor
 
 const file_tasks_proto_rawDesc = "" +
@@ -709,12 +797,18 @@ const file_tasks_proto_rawDesc = "" +
 	"\atask_id\x18\x02 \x01(\x03R\x06taskId\"3\n" +
 	"\x12DeleteTaskResponse\x12\x1d\n" +
 	"\n" +
-	"id_deleted\x18\x01 \x01(\bR\tidDeleted2\xef\x02\n" +
+	"id_deleted\x18\x01 \x01(\bR\tidDeleted\"+\n" +
+	"\x15CreateCategoryRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"9\n" +
+	"\x16CreateCategoryResponse\x12\x1f\n" +
+	"\vcategory_id\x18\x01 \x01(\x03R\n" +
+	"categoryId2\xbe\x03\n" +
 	"\fTasksService\x12;\n" +
 	"\bGetTasks\x12\x16.tasks.GetTasksRequest\x1a\x17.tasks.GetTasksResponse\x12Y\n" +
 	"\x12GetTasksByCategory\x12 .tasks.GetTasksByCategoryRequest\x1a!.tasks.GetTasksByCategoryResponse\x12A\n" +
 	"\n" +
-	"CreateTask\x12\x18.tasks.CreateTaskRequest\x1a\x19.tasks.CreateTaskResponse\x12A\n" +
+	"CreateTask\x12\x18.tasks.CreateTaskRequest\x1a\x19.tasks.CreateTaskResponse\x12M\n" +
+	"\x0eCreateCategory\x12\x1c.tasks.CreateCategoryRequest\x1a\x1d.tasks.CreateCategoryResponse\x12A\n" +
 	"\n" +
 	"UpdateTask\x12\x18.tasks.UpdateTaskRequest\x1a\x19.tasks.UpdateTaskResponse\x12A\n" +
 	"\n" +
@@ -732,7 +826,7 @@ func file_tasks_proto_rawDescGZIP() []byte {
 	return file_tasks_proto_rawDescData
 }
 
-var file_tasks_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_tasks_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_tasks_proto_goTypes = []any{
 	(*Task)(nil),                       // 0: tasks.Task
 	(*GetTasksRequest)(nil),            // 1: tasks.GetTasksRequest
@@ -745,27 +839,31 @@ var file_tasks_proto_goTypes = []any{
 	(*UpdateTaskResponse)(nil),         // 8: tasks.UpdateTaskResponse
 	(*DeleteTaskRequest)(nil),          // 9: tasks.DeleteTaskRequest
 	(*DeleteTaskResponse)(nil),         // 10: tasks.DeleteTaskResponse
-	(*timestamppb.Timestamp)(nil),      // 11: google.protobuf.Timestamp
+	(*CreateCategoryRequest)(nil),      // 11: tasks.CreateCategoryRequest
+	(*CreateCategoryResponse)(nil),     // 12: tasks.CreateCategoryResponse
+	(*timestamppb.Timestamp)(nil),      // 13: google.protobuf.Timestamp
 }
 var file_tasks_proto_depIdxs = []int32{
-	11, // 0: tasks.Task.deadline:type_name -> google.protobuf.Timestamp
-	11, // 1: tasks.Task.created_at:type_name -> google.protobuf.Timestamp
+	13, // 0: tasks.Task.deadline:type_name -> google.protobuf.Timestamp
+	13, // 1: tasks.Task.created_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: tasks.GetTasksResponse.tasks:type_name -> tasks.Task
 	0,  // 3: tasks.GetTasksByCategoryResponse.tasks:type_name -> tasks.Task
-	11, // 4: tasks.CreateTaskRequest.deadline:type_name -> google.protobuf.Timestamp
-	11, // 5: tasks.UpdateTaskRequest.deadline:type_name -> google.protobuf.Timestamp
+	13, // 4: tasks.CreateTaskRequest.deadline:type_name -> google.protobuf.Timestamp
+	13, // 5: tasks.UpdateTaskRequest.deadline:type_name -> google.protobuf.Timestamp
 	1,  // 6: tasks.TasksService.GetTasks:input_type -> tasks.GetTasksRequest
 	3,  // 7: tasks.TasksService.GetTasksByCategory:input_type -> tasks.GetTasksByCategoryRequest
 	5,  // 8: tasks.TasksService.CreateTask:input_type -> tasks.CreateTaskRequest
-	7,  // 9: tasks.TasksService.UpdateTask:input_type -> tasks.UpdateTaskRequest
-	9,  // 10: tasks.TasksService.DeleteTask:input_type -> tasks.DeleteTaskRequest
-	2,  // 11: tasks.TasksService.GetTasks:output_type -> tasks.GetTasksResponse
-	4,  // 12: tasks.TasksService.GetTasksByCategory:output_type -> tasks.GetTasksByCategoryResponse
-	6,  // 13: tasks.TasksService.CreateTask:output_type -> tasks.CreateTaskResponse
-	8,  // 14: tasks.TasksService.UpdateTask:output_type -> tasks.UpdateTaskResponse
-	10, // 15: tasks.TasksService.DeleteTask:output_type -> tasks.DeleteTaskResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
+	11, // 9: tasks.TasksService.CreateCategory:input_type -> tasks.CreateCategoryRequest
+	7,  // 10: tasks.TasksService.UpdateTask:input_type -> tasks.UpdateTaskRequest
+	9,  // 11: tasks.TasksService.DeleteTask:input_type -> tasks.DeleteTaskRequest
+	2,  // 12: tasks.TasksService.GetTasks:output_type -> tasks.GetTasksResponse
+	4,  // 13: tasks.TasksService.GetTasksByCategory:output_type -> tasks.GetTasksByCategoryResponse
+	6,  // 14: tasks.TasksService.CreateTask:output_type -> tasks.CreateTaskResponse
+	12, // 15: tasks.TasksService.CreateCategory:output_type -> tasks.CreateCategoryResponse
+	8,  // 16: tasks.TasksService.UpdateTask:output_type -> tasks.UpdateTaskResponse
+	10, // 17: tasks.TasksService.DeleteTask:output_type -> tasks.DeleteTaskResponse
+	12, // [12:18] is the sub-list for method output_type
+	6,  // [6:12] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name
@@ -782,7 +880,7 @@ func file_tasks_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tasks_proto_rawDesc), len(file_tasks_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -22,6 +22,7 @@ const (
 	TasksService_GetTasks_FullMethodName           = "/tasks.TasksService/GetTasks"
 	TasksService_GetTasksByCategory_FullMethodName = "/tasks.TasksService/GetTasksByCategory"
 	TasksService_CreateTask_FullMethodName         = "/tasks.TasksService/CreateTask"
+	TasksService_CreateCategory_FullMethodName     = "/tasks.TasksService/CreateCategory"
 	TasksService_UpdateTask_FullMethodName         = "/tasks.TasksService/UpdateTask"
 	TasksService_DeleteTask_FullMethodName         = "/tasks.TasksService/DeleteTask"
 )
@@ -33,6 +34,7 @@ type TasksServiceClient interface {
 	GetTasks(ctx context.Context, in *GetTasksRequest, opts ...grpc.CallOption) (*GetTasksResponse, error)
 	GetTasksByCategory(ctx context.Context, in *GetTasksByCategoryRequest, opts ...grpc.CallOption) (*GetTasksByCategoryResponse, error)
 	CreateTask(ctx context.Context, in *CreateTaskRequest, opts ...grpc.CallOption) (*CreateTaskResponse, error)
+	CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*CreateCategoryResponse, error)
 	UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*UpdateTaskResponse, error)
 	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*DeleteTaskResponse, error)
 }
@@ -75,6 +77,16 @@ func (c *tasksServiceClient) CreateTask(ctx context.Context, in *CreateTaskReque
 	return out, nil
 }
 
+func (c *tasksServiceClient) CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*CreateCategoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCategoryResponse)
+	err := c.cc.Invoke(ctx, TasksService_CreateCategory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tasksServiceClient) UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*UpdateTaskResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateTaskResponse)
@@ -102,6 +114,7 @@ type TasksServiceServer interface {
 	GetTasks(context.Context, *GetTasksRequest) (*GetTasksResponse, error)
 	GetTasksByCategory(context.Context, *GetTasksByCategoryRequest) (*GetTasksByCategoryResponse, error)
 	CreateTask(context.Context, *CreateTaskRequest) (*CreateTaskResponse, error)
+	CreateCategory(context.Context, *CreateCategoryRequest) (*CreateCategoryResponse, error)
 	UpdateTask(context.Context, *UpdateTaskRequest) (*UpdateTaskResponse, error)
 	DeleteTask(context.Context, *DeleteTaskRequest) (*DeleteTaskResponse, error)
 	mustEmbedUnimplementedTasksServiceServer()
@@ -122,6 +135,9 @@ func (UnimplementedTasksServiceServer) GetTasksByCategory(context.Context, *GetT
 }
 func (UnimplementedTasksServiceServer) CreateTask(context.Context, *CreateTaskRequest) (*CreateTaskResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTask not implemented")
+}
+func (UnimplementedTasksServiceServer) CreateCategory(context.Context, *CreateCategoryRequest) (*CreateCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCategory not implemented")
 }
 func (UnimplementedTasksServiceServer) UpdateTask(context.Context, *UpdateTaskRequest) (*UpdateTaskResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTask not implemented")
@@ -204,6 +220,24 @@ func _TasksService_CreateTask_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TasksService_CreateCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TasksServiceServer).CreateCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TasksService_CreateCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TasksServiceServer).CreateCategory(ctx, req.(*CreateCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TasksService_UpdateTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateTaskRequest)
 	if err := dec(in); err != nil {
@@ -258,6 +292,10 @@ var TasksService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateTask",
 			Handler:    _TasksService_CreateTask_Handler,
+		},
+		{
+			MethodName: "CreateCategory",
+			Handler:    _TasksService_CreateCategory_Handler,
 		},
 		{
 			MethodName: "UpdateTask",

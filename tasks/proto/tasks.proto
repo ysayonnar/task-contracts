@@ -11,6 +11,7 @@ service TasksService {
   rpc GetTasksByCategory(GetTasksByCategoryRequest)
       returns (GetTasksByCategoryResponse);
   rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse);
+  rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse);
   rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse);
   rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse);
 }
@@ -65,3 +66,7 @@ message DeleteTaskRequest {
 }
 
 message DeleteTaskResponse { bool id_deleted = 1; }
+
+message CreateCategoryRequest { string name = 1; }
+
+message CreateCategoryResponse { int64 category_id = 1; }
