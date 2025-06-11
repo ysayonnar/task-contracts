@@ -436,12 +436,13 @@ func (x *CreateTaskResponse) GetTaskId() int64 {
 
 type UpdateTaskRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	CategoryId    int64                  `protobuf:"varint,2,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
-	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	IsNotificate  bool                   `protobuf:"varint,5,opt,name=is_notificate,json=isNotificate,proto3" json:"is_notificate,omitempty"`
-	Deadline      *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=deadline,proto3" json:"deadline,omitempty"`
+	TaskId        int64                  `protobuf:"varint,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	CategoryId    int64                  `protobuf:"varint,3,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	Title         string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
+	Description   string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	IsNotificate  bool                   `protobuf:"varint,6,opt,name=is_notificate,json=isNotificate,proto3" json:"is_notificate,omitempty"`
+	Deadline      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deadline,proto3" json:"deadline,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -474,6 +475,13 @@ func (x *UpdateTaskRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateTaskRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTaskRequest) Descriptor() ([]byte, []int) {
 	return file_tasks_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UpdateTaskRequest) GetTaskId() int64 {
+	if x != nil {
+		return x.TaskId
+	}
+	return 0
 }
 
 func (x *UpdateTaskRequest) GetUserId() int64 {
@@ -781,15 +789,16 @@ const file_tasks_proto_rawDesc = "" +
 	"\ris_notificate\x18\x05 \x01(\bR\fisNotificate\x126\n" +
 	"\bdeadline\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"-\n" +
 	"\x12CreateTaskResponse\x12\x17\n" +
-	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"\xe2\x01\n" +
+	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"\xfb\x01\n" +
 	"\x11UpdateTaskRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
-	"\vcategory_id\x18\x02 \x01(\x03R\n" +
+	"\atask_id\x18\x01 \x01(\x03R\x06taskId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12\x1f\n" +
+	"\vcategory_id\x18\x03 \x01(\x03R\n" +
 	"categoryId\x12\x14\n" +
-	"\x05title\x18\x03 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12#\n" +
-	"\ris_notificate\x18\x05 \x01(\bR\fisNotificate\x126\n" +
-	"\bdeadline\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"-\n" +
+	"\x05title\x18\x04 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x05 \x01(\tR\vdescription\x12#\n" +
+	"\ris_notificate\x18\x06 \x01(\bR\fisNotificate\x126\n" +
+	"\bdeadline\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\bdeadline\"-\n" +
 	"\x12UpdateTaskResponse\x12\x17\n" +
 	"\atask_id\x18\x01 \x01(\x03R\x06taskId\"E\n" +
 	"\x11DeleteTaskRequest\x12\x17\n" +
